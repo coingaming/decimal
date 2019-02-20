@@ -3,4 +3,5 @@
 /doc
 erl_crash.dump
 *.ez
+/decimal-*.tar
 /bench/snapshots/
