@@ -30,6 +30,7 @@ defmodule Decimal.Mixfile do
     [
       {:ex_doc, ">= 0.0.0", only: :dev},
       {:benchfella, "~> 0.3.0", only: :bench, runtime: false},
+      {:equalable, "~> 0.1.0"},
       {:comparable, github: "coingaming/comparable"}
     ]
   end
