@@ -1274,7 +1274,7 @@ defmodule Decimal do
     * `:raw` - number converted to its raw, internal format.
 
   """
-  @spec to_string(t, :scientific | :normal | :raw) :: String.t()
+  @spec to_string(t, :scientific | :normal | :xsd | :raw) :: String.t()
   def to_string(num, type \\ :scientific)
 
   def to_string(%Decimal{sign: sign, coef: :qNaN}, _type) do
@@ -1860,6 +1860,20 @@ defmodule Decimal do
     defp integer_to_charlist(string), do: Integer.to_char_list(string)
   else
     defp integer_to_charlist(string), do: Integer.to_charlist(string)
+  end
+end
+
+defmodule Decimal.Sigils do
+  @moduledoc """
+  Decimal sigils to easily create decimal numbers.
+
+  ## Examples
+     iex> ~d[42.42]
+     #Decimal<42.42>
+  """
+
+  defmacro sigil_d({:<<>>, _, [string]}, _opts) do
+    Macro.escape(Decimal.new(string))
   end
 end
 
